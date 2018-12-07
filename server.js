@@ -33,7 +33,7 @@ app.get('/weather', (request, response) => {
 })
 
 function searchWeather(query) {
-  const dailyWeatherData = require('./data/darksky.json');
+  const darkSkyData = require('./data/darksky.json');
   const weather = new Weather(darksky.)
 }
 
