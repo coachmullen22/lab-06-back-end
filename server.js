@@ -20,6 +20,7 @@ app.get('/location', (request, response) => {
   response.send(locationData);
 });
 
+
 function searchToLatLong(query) {
   const geoData = require('./data/geo.json');
   const location = new Location(geoData.results[0]);
