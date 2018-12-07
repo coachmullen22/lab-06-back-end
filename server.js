@@ -20,15 +20,25 @@ app.get('/location', (request, response) => {
   response.send(locationData);
 });
 
-
 function searchToLatLong(query) {
   const geoData = require('./data/geo.json');
   const location = new Location(geoData.results[0]);
   return location;
 }
 
-function Location(location){
+// Get Weather Data
+app.get('/weather', (request, response) => {
+  const weatherData = searchWeather(request.query.data || /*.........*/);
+  response.send(weatherData);
+})
+
+function searchWeather(query) {
+  const dailyWeatherData = require('./data/darksky.json');
+  const weather = new Weather(darksky.)
+}
+
 // Data the front end needs
+function Location(location){
   this.formatted_query = location.formatted_address;
   this.latitude = location.geometry.location.lat;
   this.longitude = location.geometry.location.lng;
