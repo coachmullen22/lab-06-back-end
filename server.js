@@ -14,23 +14,31 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 app.use(cors());
 
+// Routes
 // Get Location Data
 app.get('/location', (request, response) => {
   const locationData = searchToLatLong(request.query.data);
   response.send(locationData);
 });
 
-function searchToLatLong(query) {
-  const geoData = require('./data/geo.json');
-  const location = new Location(geoData.results[0]);
-  return location;
-}
-
 // Get Weather Data
 app.get('/weather', (request, response) => {
   const weatherData = searchWeather(request.query.data);
   response.send(weatherData);
 })
+
+// Handlers
+
+// Constructors
+
+// Search For Resource
+
+
+function searchToLatLong(query) {
+  const geoData = require('./data/geo.json');
+  const location = new Location(geoData.results[0]);
+  return location;
+}
 
 function searchWeather(query) {
   const darkSkyData = require('./data/darksky.json');
@@ -40,8 +48,7 @@ function searchWeather(query) {
   return dayWeather.map( day => {
     let weather = new Weather(day);
     return weather;
-  })
-
+  });
 }
 
 // Data the front end needs

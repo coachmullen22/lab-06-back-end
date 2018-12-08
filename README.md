@@ -6,27 +6,27 @@ Estimate of time needed to complete: 2 hours
 
 Start time: 5:30pm
 
-Finish time: 7:45pm
+Finish time: 8:30pm
 
-Actual time needed to complete: 2.25 hours
+Actual time needed to complete: 3.0 hours
 ////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////
 Number and name of feature: Feature 2 - Weather
 
 Estimate of time needed to complete: 2 hours
 
-Start time: 
+Start time: 3:00pm
 
-Finish time: 
+Finish time: 8:30pm
 
-Actual time needed to complete: 
+Actual time needed to complete: 5.5 hours
 ////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////
 Number and name of feature: Feature 3 - Error Message
 
 Estimate of time needed to complete: 
 
-Start time: 3:30pm
+Start time: --
 
 Finish time: 
 
