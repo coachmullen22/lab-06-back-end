@@ -16,7 +16,7 @@ app.use(cors());
 
 // Get Location Data
 app.get('/location', (request, response) => {
-  const locationData = searchToLatLong(request.query.data || 'Lynnwood, WA');
+  const locationData = searchToLatLong(request.query.data);
   response.send(locationData);
 });
 
@@ -28,13 +28,22 @@ function searchToLatLong(query) {
 
 // Get Weather Data
 app.get('/weather', (request, response) => {
-  const weatherData = searchWeather(request.query.data || /*.........*/);
+  const weatherData = searchWeather(request.query.data);
   response.send(weatherData);
 })
 
 function searchWeather(query) {
   const darkSkyData = require('./data/darksky.json');
-  const weather = new Weather(darksky.)
+  let dayWeather = darkSkyData.daily.data;
+
+  dayWeather.forEach( day => {
+    let weather = new Weather(darkSkyData.daily.data);
+    return day;
+  })
+  console.log (day)
+
+//   // const weather = new Weather(darkSkyData.daily.data);
+//   return weather
 }
 
 // Data the front end needs
@@ -42,6 +51,11 @@ function Location(location){
   this.formatted_query = location.formatted_address;
   this.latitude = location.geometry.location.lat;
   this.longitude = location.geometry.location.lng;
+}
+
+function Weather(weather) {
+  this.forecast = weather.summary;
+  this.time = weather.time;
 }
 //Give Error Messages if incorrect
 
