@@ -28,23 +28,14 @@ function searchToLatLong(query) {
 
 // Get Weather Data
 app.get('/weather', (request, response) => {
-  const weatherData = searchWeather(request.query.data);
-  response.send(weatherData);
-})
-
-function searchWeather(query) {
   const darkSkyData = require('./data/darksky.json');
-  let dayWeather = darkSkyData.daily.data;
-
-  dayWeather.forEach( day => {
-    let weather = new Weather(darkSkyData.daily.data);
-    return day;
-  })
-  console.log (day)
-
-//   // const weather = new Weather(darkSkyData.daily.data);
-//   return weather
-}
+  let weather = darkSkyData.daily.data;
+  response.send(weather.map( day => {
+    let dayWeather = new Weather(day);
+    return dayWeather;
+  }))
+  // response.send(weather);
+});
 
 // Data the front end needs
 function Location(location){
@@ -55,7 +46,7 @@ function Location(location){
 
 function Weather(weather) {
   this.forecast = weather.summary;
-  this.time = weather.time;
+  this.time = new Date(weather.time * 1000).toDateString();
 }
 //Give Error Messages if incorrect
 
