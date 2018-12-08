@@ -35,15 +35,13 @@ app.get('/weather', (request, response) => {
 function searchWeather(query) {
   const darkSkyData = require('./data/darksky.json');
   let dayWeather = darkSkyData.daily.data;
+  // console.log(darkSkyData.daily.data);
 
-  dayWeather.forEach( day => {
-    let weather = new Weather(darkSkyData.daily.data);
-    return day;
+  return dayWeather.map( day => {
+    let weather = new Weather(day);
+    return weather;
   })
-  console.log (day)
 
-//   // const weather = new Weather(darkSkyData.daily.data);
-//   return weather
 }
 
 // Data the front end needs
@@ -55,7 +53,7 @@ function Location(location){
 
 function Weather(weather) {
   this.forecast = weather.summary;
-  this.time = weather.time;
+  this.time = new Date(weather.time * 1000).toDateString();
 }
 //Give Error Messages if incorrect
 
